@@ -31,7 +31,7 @@ jobs:
       with:
         go-version: 1.23.0
         cache: false
-    - run: go build -mod vendor -o ./bin/prometheus-plex-exporter ./cmd/prometheus-plex-exporter
+    - run: go build -o ./bin/prometheus-plex-exporter ./cmd/prometheus-plex-exporter
       env:
         CGO_ENABLED: "0"
         GOOS: ${{ matrix.goos }}
