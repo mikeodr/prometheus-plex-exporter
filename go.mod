@@ -1,6 +1,6 @@
 module github.com/grafana/plexporter
 
-go 1.23
+go 1.24.7
 
 require (
 	github.com/go-kit/log v0.2.1
