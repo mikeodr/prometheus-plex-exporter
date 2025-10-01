@@ -3,6 +3,8 @@ package main
 import (
 	"context"
 	"errors"
+	"flag"
+	"fmt"
 	"net/http"
 	"os"
 	"os/signal"
@@ -17,15 +19,18 @@ import (
 	"github.com/grafana/plexporter/pkg/plex"
 )
 
-const (
-	MetricsServerAddr = ":9000"
-)
-
 var (
 	log = kitlog.NewLogfmtLogger(kitlog.NewSyncWriter(os.Stderr))
+
+	MetricsServerBindAddr = flag.String("bind-addr", "", "The address the metrics endpoint binds to.")
+	MetricsServerPort     = flag.Int("port", 9000, "The port the metrics endpoint binds to.")
 )
 
 func main() {
+	flag.Parse()
+
+	MetricsServerAddr := fmt.Sprintf("%s:%d", *MetricsServerBindAddr, *MetricsServerPort)
+
 	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer cancel()
 
