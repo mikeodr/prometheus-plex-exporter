@@ -23,6 +23,9 @@
         subPackages = [
           "cmd/prometheus-plex-exporter"
         ];
+        ldflags = [
+          "-s"
+        ];
         src = ./.;
         vendorHash = "sha256-RhP9bp2GQd5SyAQ8IzpOiUhPEZqkxhmcEESC9E6AfRM=";
         meta.mainProgram = "prometheus-plex-exporter";
