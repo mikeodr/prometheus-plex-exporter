@@ -41,7 +41,7 @@ jobs:
         CGO_ENABLED: "0"
         GOOS: ${{ matrix.goos }}
         GOARCH: ${{ matrix.goarch }}
-    - uses: actions/upload-artifact@v5
+    - uses: actions/upload-artifact@v6
       with:
         name: prometheus-plex-exporter-${{ matrix.goos }}-${{ matrix.goarch}}
         path: ./bin
