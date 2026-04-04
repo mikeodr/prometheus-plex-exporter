@@ -14,7 +14,7 @@
     eachSystem = f: nixpkgs.lib.genAttrs (import systems) (s: f nixpkgs.legacyPackages.${s});
   in {
     packages = eachSystem (pkgs: {
-      default = pkgs.buildGo124Module {
+      default = (pkgs.buildGoModule.override {go = pkgs.go_1_26;}) {
         pname = "prometheus-plex-exporter";
         version =
           if (self ? shortRev)
