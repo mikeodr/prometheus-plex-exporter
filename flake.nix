@@ -123,7 +123,8 @@
         systemd.services.prometheus-plex-exporter = {
           description = "Prometheus Plex Exporter";
           after = ["network.target" "plex.service"];
-          wants = ["network.target" "plex.service"];
+          requires = ["plex.service"];
+          wants = ["network.target"];
           environment = mkIf (cfg.environmentFile == null) {
             PLEX_SERVER = cfg.plexServer;
             PLEX_TOKEN = cfg.plexToken;
