@@ -14,7 +14,7 @@
     eachSystem = f: nixpkgs.lib.genAttrs (import systems) (s: f nixpkgs.legacyPackages.${s});
   in {
     packages = eachSystem (pkgs: {
-      default = (pkgs.buildGoModule.override {go = pkgs.go_1_26;}) {
+      default = (pkgs.buildGoModule.override {go = pkgs.go_1_27;}) {
         pname = "prometheus-plex-exporter";
         version =
           if (self ? shortRev)
@@ -24,7 +24,7 @@
           "cmd/prometheus-plex-exporter"
         ];
         src = ./.;
-        vendorHash = "sha256-RhP9bp2GQd5SyAQ8IzpOiUhPEZqkxhmcEESC9E6AfRM=";
+        vendorHash = "sha256-oFDqwLIdDVZ02rARKNMnCYEWs7tVoa1CvJAOHBsQG/o=";
         meta.mainProgram = "prometheus-plex-exporter";
       };
     });
